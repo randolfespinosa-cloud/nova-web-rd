@@ -1,55 +1,36 @@
-import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type { Metadata } from "next"
+import { Inter, Montserrat } from "next/font/google"
+import "./globals.css"
 
-const _inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
-
-const _spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-space-grotesk',
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const montserrat = Montserrat({ 
+  subsets: ["latin"], 
+  variable: "--font-heading",
+  weight: ["700"] 
 })
 
 export const metadata: Metadata = {
-  title: 'Agencia de Desarrollo Web | Sitios Modernos y Escalables',
-  description:
-    'Desarrollamos sitios web dinamicos, interactivos y bien estructurados para escalar tu negocio.',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+  title: "Nova Web RD | Agencia de Desarrollo Web",
+  description: "Transformamos tu negocio con sitios web profesionales. Contáctanos en info@novawebrd.com o visita novawebrd.com para conocer nuestros servicios.",
+  openGraph: {
+    title: "Nova Web RD",
+    description: "Expertos en presencia digital y desarrollo de software.",
+    url: "https://novawebrd.com",
+    siteName: "Nova Web RD",
+    locale: "es_DO",
+    type: "website",
   },
-}
-
-export const viewport: Viewport = {
-  themeColor: '#f8f9fc',
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="es" className={`${_inter.variable} ${_spaceGrotesk.variable}`}>
-      <body className="font-sans antialiased">
+    <html lang="es" className="scroll-smooth">
+      <body className={`${inter.variable} ${montserrat.variable} font-sans antialiased`}>
         {children}
-        <Analytics />
       </body>
     </html>
   )
